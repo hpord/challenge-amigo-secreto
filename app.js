@@ -1,6 +1,7 @@
 "use strict"
 
 let amigos = [];
+const botonSortear = document.querySelector('.button-draw');
 
 function agregarAmigo() {
     document.querySelector('#resultado').innerHTML = '';
@@ -9,6 +10,7 @@ function agregarAmigo() {
         alert('Por favor, inserte un nombre.');
         return;
     }
+    if (botonSortear.disabled) botonSortear.disabled = false;
     amigos.push(amigoElement.value.trim());
     //console.log(amigos);
     actualizarListaAmigos();
@@ -30,4 +32,5 @@ function sortearAmigo() {
     document.querySelector('#resultado').innerHTML = `<li>El amigo secreto sorteado es: ${amigos[numeroAmigo]}</li>`;
     document.querySelector('#listaAmigos').innerHTML = '';
     amigos = [];
+    botonSortear.disabled = true;
 }
